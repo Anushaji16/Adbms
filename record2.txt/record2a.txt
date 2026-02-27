@@ -1,0 +1,217 @@
+1.insert values in employee table
+mysql> insert into employee(emp_id,empname)values(102,'anitha'),(103,'ancy'),(104,'drish'),(105,'alona'),(106,'abi'),(107,'ammu'),(108,'vava');
+--------------
+insert into employee(emp_id,empname)values(102,'anitha'),(103,'ancy'),(104,'drish'),(105,'alona'),(106,'abi'),(107,'ammu'),(108,'vava')
+--------------
+
+Query OK, 7 rows affected (0.00 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
+--------------
+select * from employee
+--------------
+
++--------+---------+
+| emp_id | empname |
++--------+---------+
+|    101 | anu     |
+|    102 | anitha  |
+|    103 | ancy    |
+|    104 | drish   |
+|    105 | alona   |
+|    106 | abi     |
+|    107 | ammu    |
+|    108 | vava    |
++--------+---------+
+
+2. insert values into STUDENT TABLE.
+mysql> insert into student(name,roll,dob)values('amitha',34,1978),('manisha',23,1975 ),('saniya',24,1976 );
+--------------
+insert into student(name,roll,dob)values('amitha',34,1978),('manisha',23,1975 ),('saniya',24,1976 );
+
+--------------
+
+Query OK, 3 row affected (0.00 sec)
+mysql> select * from student;
+--------------
+select * from student
+--------------
+
++---------+------+------+
+| name    | roll | dob  |
++---------+------+------+
+| anu     |    6 | NULL |
+| karuna  |   13 | NULL |
+| niya    |   21 | NULL |
+| amitha  |   34 | 1978 |
+| manisha |   23 | 1975 |
+| saniya  |   24 | 1976 |
++---------+------+------+
+6 rows in set (0.00 sec)
+
+
+3. insert values in invoice database
+mysql> insert into customer values(101,'anu','gosepel','karulai',8086871386);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values(102,'ancy','virdhavan','edakkara',9495964793);
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql> insert into customer values(103,'anitha','anathabhavan','melatoor',96465616078);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values(104,'aswani','manassery','kozhikode',9744881671);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values(105,'karuna','kozhipurayil','trivandram',9405167731);
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql> insert into customer values(106,'niya','vadakara','trivandram',9834598607);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into customer values(107,'aiswarya','kizhakunil','agathyamozhi',9509876541);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from customer;
++---------+-----------+--------------+--------------+-------------+
+| cust_id | cust_name | address      | city         | ph_no       |
++---------+-----------+--------------+--------------+-------------+
+|     101 | anu       | gosepel      | karulai      | 8086871386  |
+|     102 | ancy      | virdhavan    | edakkara     | 9495964793  |
+|     103 | anitha    | anathabhavan | melatoor     | 96465616078 |
+|     104 | aswani    | manassery    | kozhikode    | 9744881671  |
+|     105 | karuna    | kozhipurayil | trivandram   | 9405167731  |
+|     106 | niya      | vadakara     | trivandram   | 9834598607  |
+|     107 | aiswarya  | kizhakunil   | agathyamozhi | 9509876541  |
++---------+-----------+--------------+--------------+-------------+
+7 rows in set (0.00 sec)
+
+
+
+mysql> insert into product values(201,'keyboard',300);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into product values(202,'mouse',200);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into product values(203,'notebook',20.00);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into product values(204,'laptopbag',450.00);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into product values(205,'waterbottle',120.00);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into product values(206,'pencil',5.00);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into product values(207,'eraser',3.00);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from product;
++--------+-------------+-------+
+| prd_id | prd_name    | price |
++--------+-------------+-------+
+|    201 | keyboard    |   300 |
+|    202 | mouse       |   200 |
+|    203 | notebook    |    20 |
+|    204 | laptopbag   |   450 |
+|    205 | waterbottle |   120 |
+|    206 | pencil      |     5 |
+|    207 | eraser      |     3 |
++--------+-------------+-------+
+7 rows in set (0.00 sec)
+
+
+
+
+mysql>  insert into invoice_master values(001,101,'2025-01-25');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into invoice_master values(002,102,'2025-02-26');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into invoice_master values(003,103,'2025-03-9');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into invoice_master values(004,104,'2025-03-10');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into invoice_master values(005,105,'2025-03-11');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into invoice_master values(006,106,'2025-03-12');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into invoice_master values(007,107,'2025-04-15');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into invoice_master values(008,106,'2025-04-17');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into invoice_master values(009,105,'2025-05-18');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into invoice_master values(0010,104,'2025-07-19');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into invoice_master values(0011,106,'2025-08-20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into invoice_master values(0012,105,'2025-09-22');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into invoice_master values(0013,104,'2025-10-23');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from invoice_master;
++-------+---------+------------+
+| iv_id | cust_id | inv_date   |
++-------+---------+------------+
+|     1 |     101 | 2025-01-25 |
+|     2 |     102 | 2025-02-26 |
+|     3 |     103 | 2025-03-09 |
+|     4 |     104 | 2025-03-10 |
+|     5 |     105 | 2025-03-11 |
+|     6 |     106 | 2025-03-12 |
+|     7 |     107 | 2025-04-15 |
+|     8 |     106 | 2025-04-17 |
+|     9 |     105 | 2025-05-18 |
+|    10 |     104 | 2025-07-19 |
+|    11 |     106 | 2025-08-20 |
+|    12 |     105 | 2025-09-22 |
+|    13 |     104 | 2025-10-23 |
++-------+---------+------------+
+13 rows in set (0.00 sec)
+
+
+mysql> insert into invoice_item(iv_id,prd_id,quantity)values(3,204,50),(5,203,30),(11,206,5),(12,207,3);
+--------------
+insert into invoice_item(iv_id,prd_id,quantity)values(3,204,50),(5,203,30),(11,206,5),(12,207,3);
+--------------
+
+
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+select * from invoice_item
+--------------
+
++-------+--------+----------+
+| iv_id | prd_id | quantity |
++-------+--------+----------+
+|     7 |    204 |       70 |
+|     3 |    204 |       50 |
+|     5 |    203 |       30 |
+|    11 |    206 |        5 |
+|    12 |    207 |        3 |
++-------+--------+----------+
+5 rows in set (0.00 sec)
+
+
+
+

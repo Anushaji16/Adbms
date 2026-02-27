@@ -1,0 +1,321 @@
+1. update the price of a pariticular product. 
+
+update product set price=500 where prd_id=204;
+--------------
+
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from product;
+--------------
+
+
++--------+-------------+-------+
+| prd_id | prd_name    | price |
++--------+-------------+-------+
+|    201 | keyboard    |   300 |
+|    202 | mouse       |   200 |
+|    203 | notebook    |    20 |
+|    204 | laptopbag   |   500 |
+|    205 | waterbottle |   120 |
+|    206 | pencil      |     5 |
+|    207 | eraser      |     3 |
++--------+-------------+-------+
+7 rows in set (0.00 sec)
+
+2.change the name city kozhikode to calicut in the customer table
+
+mysql> update customer set city ='calicut' where city ='kozhikode';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from customer;
+--------------
+
+
+
++---------+-----------+--------------+--------------+-------------+
+| cust_id | cust_name | address      | city         | ph_no       |
++---------+-----------+--------------+--------------+-------------+
+|     101 | anu       | gosepel      | karulai      | NULL        |
+|     102 | ancy      | virdhavan    | edakkara     | 9495964793  |
+|     103 | anitha    | anathabhavan | melatoor     | 96465616078 |
+|     104 | aswani    | manassery    | calicut      | NULL        |
+|     105 | karuna    | kozhipurayil | trivandram   | 9405167731  |
+|     106 | niya      | vadakara     | trivandram   | 9834598607  |
+|     107 | aiswarya  | kizhakunil   | agathyamozhi | 9509876541  |
++---------+-----------+--------------+--------------+-------------+
+
+
+
+3. update all prices with 2% of its orginal price.
+
+
+mysql> update product set price = price +(price * 0.02);
+--------------
+
+
+Query OK, 4 rows affected (0.00 sec)
+Rows matched: 7  Changed: 4  Warnings: 0
+
+mysql> select * from product;
+--------------
+
+
++--------+-------------+-------+
+| prd_id | prd_name    | price |
++--------+-------------+-------+
+|    201 | keyboard    |   408 |
+|    202 | mouse       |   204 |
+|    203 | notebook    |    20 |
+|    204 | laptopbag   |   510 |
+|    205 | waterbottle |   122 |
+|    206 | pencil      |     5 |
+|    207 | eraser      |     3 |
++--------+-------------+-------+
+7 rows in set (0.00 sec)
+
+3.
+update customer set address ='molukalayil',city ='kattadi',ph_no ='9605114656'where cust_id =102
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from customer;
+--------------
+
+
++---------+-----------+--------------+--------------+-------------+
+| cust_id | cust_name | address      | city         | ph_no       |
++---------+-----------+--------------+--------------+-------------+
+|     101 | anu       | gosepel      | karulai      | NULL        |
+|     102 | ancy      | molukalayil  | kattadi      | 9605114656  |
+|     103 | anitha    | anathabhavan | melatoor     | 96465616078 |
+|     104 | aswani    | manassery    | calicut      | NULL        |
+|     105 | karuna    | kozhipurayil | trivandram   | 9405167731  |
+|     106 | niya      | vadakara     | trivandram   | 9834598607  |
+|     107 | aiswarya  | kizhakunil   | agathyamozhi | 9509876541  |
++---------+-----------+--------------+--------------+-------------+
+7 rows in set (0.00 sec)
+
+
+update invoice_item set quantity=5 where iv_id=1
+--------------
+
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from invoice_item;
+--------------
+
+
++-------+--------+----------+
+| iv_id | prd_id | quantity |
++-------+--------+----------+
+|     1 |    201 |        5 |
+|     1 |    202 |        5 |
+|     2 |    203 |        6 |
+|     3 |    204 |        6 |
+|     4 |    205 |        4 |
+|     5 |    206 |        8 |
+|     6 |    207 |        6 |
++-------+--------+----------+
+7 rows in set (0.00 sec)
+
+
+delete
+
+DELETE FROM invoice_item WHERE iv_id IN(SELECT iv_id FROM invoice_master WHERE cust_id=101);
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> DELETE FROM invoice_master WHERE cust_id =101;
+
+mysql> DELETE FROM customer WHERE cust_id=101;
+--------------
+DELETE FROM customer WHERE cust_id=101
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from customer;
+--------------
+select * from customer
+--------------
+
++---------+-----------+--------------+--------------+-------------+
+| cust_id | cust_name | address      | city         | ph_no       |
++---------+-----------+--------------+--------------+-------------+
+|     102 | ancy      | molukalayil  | kattadi      | 9605114656  |
+|     103 | anitha    | anathabhavan | melatoor     | 96465616078 |
+|     104 | aswani    | manassery    | calicut      | NULL        |
+|     105 | karuna    | kozhipurayil | trivandram   | 9405167731  |
+|     106 | niya      | vadakara     | trivandram   | 9834598607  |
+|     107 | aiswarya  | kizhakunil   | agathyamozhi | 9509876541  |
++---------+-----------+--------------+--------------+-------------+
+6 rows in set (0.00 sec)
+
+
+2. Delete all purchase details of items its quantity less than 5. 
+
+mysql> DELETE FROM invoice_item WHERE quantity<5;
+--------------
+DELETE FROM invoice_item WHERE quantity<5
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from invoice_item;
+--------------
+select * from invoice_item
+--------------
+
++-------+--------+----------+
+| iv_id | prd_id | quantity |
++-------+--------+----------+
+|     2 |    203 |        6 |
+|     3 |    204 |        6 |
+|     5 |    206 |        8 |
+|     6 |    207 |        6 |
++-------+--------+----------+
+3.Delete the purchase details of product ‘table’ in the in_id ‘2’.
+
+
+DELETE FROM invoice_item WHERE iv_id =2 AND prd_id=203;
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from invoice_item;
+--------------
+select * from invoice_item
+--------------
+
++-------+--------+----------+
+| iv_id | prd_id | quantity |
++-------+--------+----------+
+|     3 |    204 |        6 |
+|     5 |    206 |        8 |
+|     6 |    207 |        6 |
++-------+--------+----------+
+3 rows in set (0.00 sec)
+
+4.delete details of customer who does not have phone number.
+
+DELETE FROM invoice_item WHERE iv_id=4;
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+
+mysql>  DELETE FROM invoice_master WHERE cust_id =104;
+--------------
+
+
+Query OK, 3 rows affected (0.01 sec)
+
+mysql> DELETE FROM customer WHERE ph_no IS NULL;
+--------------
+DELETE FROM customer WHERE ph_no IS NULL
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from customer;
+--------------
+select * from customer
+--------------
+
++---------+-----------+--------------+--------------+-------------+
+| cust_id | cust_name | address      | city         | ph_no       |
++---------+-----------+--------------+--------------+-------------+
+|     102 | ancy      | molukalayil  | kattadi      | 9605114656  |
+|     103 | anitha    | anathabhavan | melatoor     | 96465616078 |
+|     105 | karuna    | kozhipurayil | trivandram   | 9405167731  |
+|     106 | niya      | vadakara     | trivandram   | 9834598607  |
+|     107 | aiswarya  | kizhakunil   | agathyamozhi | 9509876541  |
++---------+-----------+--------------+--------------+-------------+
+5 rows in set (0.00 sec)
+
+5. Delete all records from STUDENT table. 
+
+
+mysql> DELETE FROM student;
+--------------
+DELETE FROM student
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM student;
+--------------
+SELECT * FROM student
+--------------
+
+Empty set (0.00 sec)
+
+6.Delete Invoice details of a particular customer.
+
+DELETE FROM invoice_item WHERE iv_id=3; 
+
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+DELETE FROM invoice_master where cust_id=103;
+--------------
+
+Query OK, 1 rows affected (0.00 sec)
+
+
+
+mysql> select * from invoice_master;
+--------------
+select * from invoice_master
+--------------
+
++-------+---------+------------+
+| iv_id | cust_id | inv_date   |
++-------+---------+------------+
+|     5 |     105 | 2025-03-11 |
+|     6 |     106 | 2025-03-12 |
+|     7 |     107 | 2025-04-15 |
+|     8 |     106 | 2025-04-17 |
+|     9 |     105 | 2025-05-18 |
+|    11 |     106 | 2025-08-20 |
+|    12 |     105 | 2025-09-22 |
++-------+---------+------------+
+7 rows in set (0.00 sec)
+
+7. Delete the first two records of INVOICE_ITEM table its purchase quantity is high.
+
+mysql> delete from invoice_item where iv_id=7;
+--------------
+delete from invoice_item where iv_id=7
+--------------
+mysql> delete from invoice_item where iv_id=3;
+--------------
+delete from invoice_item where iv_id=3
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from invoice_item;
+--------------
+select * from invoice_item
+--------------
++-------+--------+----------+
+| iv_id | prd_id | quantity |
++-------+--------+----------+
+|     5 |    203 |       30 |
+|    11 |    206 |        5 |
+|    12 |    207 |        3 |
++-------+--------+----------+
+3 rows in set (0.00 sec)
+
+
+
+ 
