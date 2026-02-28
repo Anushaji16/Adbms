@@ -29,32 +29,3 @@ mysql> select min(price),max(price),avg(price) from product;
 
 2.find the number of customers in each city,and only include cities with more than2 customers.
 
-mysql> select * from customer;
-
-+---------+-----------+--------------+--------------+-------------+
-| cust_id | cust_name | address      | city         | ph_no       |
-+---------+-----------+--------------+--------------+-------------+
-|     102 | ancy      | molukalayil  | kattadi      | 9605114656  |
-|     103 | anitha    | anathabhavan | melatoor     | 96465616078 |
-|     105 | karuna    | kozhipurayil | trivandram   | 9405167731  |
-|     106 | niya      | vadakara     | trivandram   | 9834598607  |
-|     107 | aiswarya  | kizhakunil   | agathyamozhi | 9509876541  |
-|     109 | nick      | yghgy        | yhyu         | 8760987545  |
-|     110 | jenny     | mala         | kuttikad     | 4567889990  |
-+---------+-----------+--------------+--------------+-------------+
-7 rows in set (0.00 sec)
-
-
-mysql> SELECT city, COUNT(*) AS customer_count FROM customer GROUP BY city HAVING COUNT(*) > 1;
---------------
-SELECT city, COUNT(*) AS customer_count FROM customer GROUP BY city HAVING COUNT(*) > 1
---------------
-
-+------------+----------------+
-| city       | customer_count |
-+------------+----------------+
-| trivandram |              2 |
-+------------+----------------+
-1 row in set (0.00 sec)
-
-
