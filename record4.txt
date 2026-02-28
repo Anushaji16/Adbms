@@ -1,0 +1,118 @@
+1.list all invoice items,avoid duplicates
+mysql> select * from invoice_item;
+--------------
+select * from invoice_item
+--------------
+
++-------+--------+----------+
+| iv_id | prd_id | quantity |
++-------+--------+----------+
+|     7 |    204 |        5 |
+|     7 |    204 |        6 |
+|     9 |    206 |        8 |
+|     9 |    205 |        8 |
++-------+--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select distinct iv_id from invoice_item;
+--------------
+select distinct iv_id from invoice_item
+--------------
+
++-------+
+| iv_id |
++-------+
+|     7 |
+|     9 |
++-------+
+2 rows in set (0.00 sec)
+
+2. list the customer details who not live in 'tvm'.
+
+select * from customer
+--------------
+
++---------+-----------+--------------+--------------+-------------+
+| cust_id | cust_name | address      | city         | ph_no       |
++---------+-----------+--------------+--------------+-------------+
+|     102 | ancy      | molukalayil  | kattadi      | 9605114656  |
+|     103 | anitha    | anathabhavan | melatoor     | 96465616078 |
+|     105 | karuna    | kozhipurayil | trivandram   | 9405167731  |
+|     106 | niya      | vadakara     | trivandram   | 9834598607  |
+|     107 | aiswarya  | kizhakunil   | agathyamozhi | 9509876541  |
+|     109 | nick      | yghgy        | yhyu         | 8760987545  |
+|     110 | jenny     | mala         | kuttikad     | 4567889990  |
++---------+-----------+--------------+--------------+-------------+
+7 rows in set (0.00 sec)
+
+
+mysql> select * from customer where city !='trivandram';
+
+
++---------+-----------+--------------+--------------+-------------+
+| cust_id | cust_name | address      | city         | ph_no       |
++---------+-----------+--------------+--------------+-------------+
+|     102 | ancy      | molukalayil  | kattadi      | 9605114656  |
+|     103 | anitha    | anathabhavan | melatoor     | 96465616078 |
+|     107 | aiswarya  | kizhakunil   | agathyamozhi | 9509876541  |
++---------+-----------+--------------+--------------+-------------+
+3 rows in set (0.00 s
+
+
+
+3.display the customer details sorted in ascending by city and descending by names.
+
+mysql> select * from customer order by city asc,cust_name desc;
+
+
+
++---------+-----------+--------------+--------------+-------------+
+| cust_id | cust_name | address      | city         | ph_no       |
++---------+-----------+--------------+--------------+-------------+
+|     107 | aiswarya  | kizhakunil   | agathyamozhi | 9509876541  |
+|     102 | ancy      | molukalayil  | kattadi      | 9605114656  |
+|     103 | anitha    | anathabhavan | melatoor     | 96465616078 |
+|     106 | niya      | vadakara     | trivandram   | 9834598607  |
+|     105 | karuna    | kozhipurayil | trivandram   | 9405167731  |
++---------+-----------+--------------+--------------+-------------+
+5 rows in set (0.00 sec)
+
+
+
+4. find the custmer names who have 'e' or 'a' in them and at least 3 character in length.
+
+select * from customer
+--------------
+
++---------+-----------+--------------+--------------+-------------+
+| cust_id | cust_name | address      | city         | ph_no       |
++---------+-----------+--------------+--------------+-------------+
+|     102 | ancy      | molukalayil  | kattadi      | 9605114656  |
+|     103 | anitha    | anathabhavan | melatoor     | 96465616078 |
+|     105 | karuna    | kozhipurayil | trivandram   | 9405167731  |
+|     106 | niya      | vadakara     | trivandram   | 9834598607  |
+|     107 | aiswarya  | kizhakunil   | agathyamozhi | 9509876541  |
+|     109 | nick      | yghgy        | yhyu         | 8760987545  |
+|     110 | jenny     | mala         | kuttikad     | 4567889990  |
++---------+-----------+--------------+--------------+-------------+
+7 rows in set (0.00 sec)
+
+
+
+mysql> select cust_name from customer where cust_name like '%e%' or cust_name like '%a%'and cust_name like '___%';
+
++-----------+
+| cust_name |
++-----------+
+| ancy      |
+| anitha    |
+| karuna    |
+| niya      |
+| aiswarya  |
+| jenny     |
++-----------+
+
+
+
+
+
