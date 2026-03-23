@@ -1,0 +1,60 @@
+1. list the product name and quantity of invoice items
+
+mysql> SELECT product.prd_id, invoice_item.quantity
+    -> FROM product
+    -> INNER JOIN invoice_item
+    -> ON product.prd_id = invoice_item.prd_id;
+--------------
+SELECT product.prd_id, invoice_item.quantity
+FROM product
+INNER JOIN invoice_item
+ON product.prd_id = invoice_item.prd_id
+--------------
+
++--------+----------+
+| prd_id | quantity |
++--------+----------+
+|    204 |        5 |
+|    204 |        6 |
+|    206 |        8 |
+|    205 |        8 |
++--------+----------+
+4 rows in set (0.00 sec)
+
+2. display the customer name,product name invoice date of purchased item 'pen'
+
+mysql> SELECT customer.cust_name, product.prd_name, invoice_master.inv_date  FROM customer  JOIN invoice_master ON customer.cust_id = invoice_master.cust_id  JO
+IN invoice_item  ON invoice_master.iv_id = invoice_item.iv_id  JOIN product
+ ON invoice_item.prd_id = product.prd_id  WHERE product.prd_name = 'pencil';
+
++-----------+----------+------------+
+| cust_name | prd_name | inv_date   |
++-----------+----------+------------+
+| karuna    | pencil   | 2025-05-18 |
++-----------+----------+------------+
+
+3. display all customer details and invoice details must include customer has not purchased items.
+
+mysql> SELECT customer.cust_id,customer.cust_name,invoice_master.iv_id from customer left outer join invoice_master on customer.cust_id = invoice_master.cust_id;
+--------------
+
+
++---------+-----------+-------+
+| cust_id | cust_name | iv_id |
++---------+-----------+-------+
+|     102 | ancy      |  NULL |
+|     103 | anitha    |     3 |
+|     105 | karuna    |     5 |
+|     105 | karuna    |     9 |
+|     105 | karuna    |    12 |
+|     106 | niya      |     6 |
+|     106 | niya      |     8 |
+|     106 | niya      |    11 |
+|     107 | aiswarya  |     7 |
+|     109 | nick      |  NULL |
+|     110 | jenny     |  NULL |
+|     112 | james     |  NULL |
++---------+-----------+-------+
+12 rows in set (0.00 sec)
+
+
