@@ -1,0 +1,45 @@
+create a trigger to handle inserts to the product relation (if price<5 then set price to 10)
+
+MYSQL> CREATE TRIGGER CUST_TRIG AFTER insert ON product FOR EACH ROW BEGIN if new.price <5 then set.price=10 
+end if; END$$
+
+mysql>CREATE TRIGGER CUST_TRIG
+BEFORE INSERT ON product
+FOR EACH ROW
+BEGIN
+    IF NEW.price < 5 THEN
+        SET NEW.price = 10;
+    END IF;
+END
+--------------
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into product values (211,"pen",3);
+--------------
+insert into product values (211,"pen",3)
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM product;
+--------------
+SELECT * FROM product
+--------------
+
++--------+-------------+-------+
+| prd_id | prd_name    | price |
++--------+-------------+-------+
+|    200 | egg         |     5 |
+|    201 | keyboard    |   408 |
+|    202 | mouse       |   204 |
+|    203 | notebook    |    20 |
+|    204 | laptopbag   |   510 |
+|    205 | waterbottle |   122 |
+|    206 | pencil      |     5 |
+|    207 | eraser      |     3 |
+|    211 | pen         |    10 |
++--------+-------------+-------+
+9 rows in set (0.00 sec)
+
+
