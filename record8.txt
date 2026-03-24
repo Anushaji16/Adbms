@@ -1,0 +1,53 @@
+1.create a view for customers who have purchased products
+mysql> create view pro_cust as select customer.cust_id,customer.cust_name from customer join invoice_master on customer.cust_id=invoice_master.cust_id;
+--------------
+create view pro_cust as select customer.cust_id,customer.cust_name from customer join invoice_master on customer.cust_id=invoice_master.cust_id
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from pro_cust;
+--------------
+select * from pro_cust
+--------------
+
++---------+-----------+
+| cust_id | cust_name |
++---------+-----------+
+|     103 | anitha    |
+|     105 | karuna    |
+|     105 | karuna    |
+|     105 | karuna    |
+|     106 | niya      |
+|     106 | niya      |
+|     106 | niya      |
+|     107 | aiswarya  |
++---------+-----------+
+8 rows in set (0.00 sec)
+
+2.create a VIEW FOR INVOICE PRODUCTS[CNAME,,INV_ID,PRODUCT_ID,QUANTITY]
+
+
+mysql> create view invoice_prod as select customer.cust_name, invoice_item.iv_id,invoice_item.prd_id,invoice_item.quantity from customer join invoice_master on customer.cust_id=invoice_master.cust_id join invoice_item on invoice_master.iv_id=invoice_item.iv_id;
+--------------
+create view invoice_prod as select customer.cust_name, invoice_item.iv_id,invoice_item.prd_id,invoice_item.quantity from customer join invoice_master on customer.cust_id=invoice_master.cust_id join invoice_item on invoice_master.iv_id=invoice_item.iv_id
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from invoice_prod;
+--------------
+select * from invoice_prod
+--------------
+
++-----------+-------+--------+----------+
+| cust_name | iv_id | prd_id | quantity |
++-----------+-------+--------+----------+
+| aiswarya  |     7 |    204 |        5 |
+| aiswarya  |     7 |    204 |        6 |
+| karuna    |     9 |    206 |        8 |
+| karuna    |     9 |    205 |        8 |
++-----------+-------+--------+----------+
+4 rows in set (0.00 sec)
+
+
