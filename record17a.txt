@@ -1,0 +1,41 @@
+1.write a monogoDB query to create a user "customer1"and grant the read role in the invoice database
+invoice> db.createUser({ user: "customer1", pwd: "pass123",roles:[{role: "read", db:"invoice"}]})
+{ ok: 1 }
+
+
+
+2.write a mongodb query to create the backup for the invoice database
+
+mongodump --db invoice
+2026-03-25T12:30:33.788+0530	writing invoice.product to dump/invoice/product.bson
+2026-03-25T12:30:33.788+0530	writing invoice.customer to dump/invoice/customer.bson
+2026-03-25T12:30:33.790+0530	done dumping invoice.product (8 documents)
+2026-03-25T12:30:33.794+0530	done dumping invoice.customer (6 documents)
+
+
+
+3.write a mongodb query to restore a particular database or a collection.
+
+mongorestore --db invoice dump/invoice
+2026-03-25T12:41:35.696+0530	The --db and --collection flags are deprecated for this use-case; please use --nsInclude instead, i.e. with --nsInclude=${DATABASE}.${COLLECTION}
+2026-03-25T12:41:35.696+0530	building a list of collections to restore from dump/invoice dir
+2026-03-25T12:41:35.696+0530	don't know what to do with file "dump/invoice/prelude.json", skipping...
+2026-03-25T12:41:35.696+0530	reading metadata for invoice.customer from dump/invoice/customer.metadata.json
+2026-03-25T12:41:35.696+0530	reading metadata for invoice.product from dump/invoice/product.metadata.json
+2026-03-25T12:41:35.703+0530	restoring invoice.customer from dump/invoice/customer.bson
+2026-03-25T12:41:35.705+0530	restoring invoice.product from dump/invoice/product.bson
+2026-03-25T12:41:35.714+0530	finished restoring invoice.customer (6 documents, 0 failures)
+2026-03-25T12:41:35.715+0530	finished restoring invoice.product (8 documents, 0 failures)
+2026-03-25T12:41:35.715+0530	no indexes to restore for collection invoice.product
+2026-03-25T12:41:35.715+0530	restoring indexes for collection invoice.customer from metadata
+2026-03-25T12:41:35.715+0530	index: &idx.IndexDocument{Options:primitive.M{"name":"name_1", "v":2}, Key:primitive.D{primitive.E{Key:"name", Value:1}}, PartialFilterExpression:primitive.D(nil)}
+2026-03-25T12:41:35.722+0530	14 document(s) restored successfully. 0 document(s) failed to restore.
+
+
+
+
+4.write a mongodb query to  create an index for the collection customer using the field customer_name.
+
+invoice> db.customer.createIndex({ customer_name: 1})
+customer_name_1
+invoice>
